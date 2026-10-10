@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Summary tab</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  body { display: grid; grid-template-columns: 560px 1fr; gap: 56px; align-items: center; }
+  .copy h1 { font-size: 52px; }
+  .points { margin-top: 36px; display: flex; flex-direction: column; gap: 22px; }
+  .pt { display: flex; gap: 18px; align-items: flex-start; }
+  .pt b { font-size: 20px; display: block; }
+  .pt span { font-size: 16.5px; color: var(--muted); display: block; margin-top: 4px; line-height: 1.45; }
+  .pt .icon { width: 48px; height: 48px; border-radius: 14px; }
+  .pt .icon svg { width: 24px; height: 24px; }
+
+  /* mock of a Twenty record page, dark theme */
+  .app { background: #171717; border: 1px solid #333; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04); font-size: 15px; color: #ebebeb; }
+  .bar { height: 46px; display: flex; align-items: center; gap: 10px; padding: 0 18px; border-bottom: 1px solid #2c2c2c; color: #999; font-size: 14px; }
+  .bar .crumb b { color: #ebebeb; font-weight: 600; }
+  .head { display: flex; align-items: center; gap: 14px; padding: 20px 24px 0; }
+  .head .av { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, #2ee6ff, #2f6bff); }
+  .head .av svg { width: 22px; height: 22px; stroke: #fff; fill: none; stroke-width: 2; }
+  .head h3 { font-size: 20px; font-weight: 700; }
+  .head .sub { color: #999; font-size: 14px; margin-top: 2px; }
+  .chips { display: flex; gap: 8px; margin-left: auto; }
+  .chip { padding: 4px 10px; border-radius: 6px; font-size: 13px; font-weight: 600; }
+  .c-green { background: rgba(34, 211, 155, 0.15); color: #4fe0b0; }
+  .c-blue { background: rgba(47, 107, 255, 0.18); color: #7aa2ff; }
+  .tabs { display: flex; gap: 22px; padding: 18px 24px 0; border-bottom: 1px solid #2c2c2c; color: #999; font-size: 14.5px; font-weight: 500; }
+  .tabs div { padding-bottom: 12px; }
+  .tabs .on { color: #ebebeb; border-bottom: 2px solid #ebebeb; }
+  .body { padding: 22px 26px 26px; }
+  .lbl { font-size: 12px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; color: #8a8a8a; margin-bottom: 8px; }
+  .sum { line-height: 1.6; color: #dcdcdc; font-size: 15.5px; }
+  .player { margin: 20px 0; display: flex; align-items: center; gap: 14px; background: #222; border: 1px solid #333; border-radius: 999px; padding: 8px 18px 8px 8px; }
+  .play { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #2ee6ff, #6a3bff); }
+  .play svg { width: 14px; height: 14px; fill: #fff; }
+  .wave { flex: 1; display: flex; align-items: center; gap: 3px; height: 28px; }
+  .wave i { display: block; width: 3px; border-radius: 3px; background: #555; }
+  .wave i.p { background: linear-gradient(180deg, #2ee6ff, #6a3bff); }
+  .time { color: #999; font-size: 13px; font-variant-numeric: tabular-nums; }
+  .turn { padding: 9px 0; line-height: 1.5; border-top: 1px solid #262626; color: #d6d6d6; }
+  .turn:first-of-type { border-top: 0; }
+  .turn b { color: #fff; }
+  .turn b.ag { color: #7ad8ff; }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <div class="kicker">On every call and chat</div>
+    <h1>Read the call <span class="grad">in ten seconds</span></h1>
+    <p class="lead" style="font-size:20px">A Summary tab sits right after Home on each Retell Call and Retell Chat.</p>
+    <div class="points">
+      <div class="pt"><div class="icon i-amber"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5 5.6.8-4 3.9.9 5.6L12 15.6 7.1 18.3l.9-5.6-4-3.9 5.6-.8z"/></svg></div><div><b>Summary first</b><span>Retell's post-call summary on top, the part people read most.</span></div></div>
+      <div class="pt"><div class="icon i-violet"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg></div><div><b>Recording player</b><span>Plays straight from Retell. No audio is copied into Twenty.</span></div></div>
+      <div class="pt"><div class="icon i-cyan"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><b>Clean transcript</b><span>One line per turn, speaker in bold. Sentiment, outcome and your extraction fields stay on the record.</span></div></div>
+    </div>
+  </div>
+
+  <div class="app">
+    <div class="bar"><span class="crumb">Retell Calls / <b>Inbound call</b></span></div>
+    <div class="head">
+      <div class="av"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></div>
+      <div><h3>Booking assistant · Jane Example</h3><div class="sub">Inbound · 3 min 12 s · today 10:42</div></div>
+      <div class="chips"><span class="chip c-green">Positive</span><span class="chip c-blue">Successful</span></div>
+    </div>
+    <div class="tabs"><div>Home</div><div class="on">Summary</div><div>Timeline</div><div>Notes</div></div>
+    <div class="body">
+      <div class="lbl">Summary</div>
+      <div class="sum">The caller asked to move Friday's appointment. The agent offered Tuesday at 2 pm, the caller accepted, and a confirmation SMS was sent.</div>
+      <div class="player">
+        <div class="play"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20"/></svg></div>
+        <div class="wave" id="wave"></div>
+        <div class="time">0:48 / 3:12</div>
+      </div>
+      <div class="lbl">Transcript</div>
+      <div class="turn"><b class="ag">Agent:</b> Hi, this is the booking assistant. How can I help?</div>
+      <div class="turn"><b>Customer:</b> I need to move my Friday appointment, something came up.</div>
+      <div class="turn"><b class="ag">Agent:</b> No problem. I have Tuesday at 2 pm or Wednesday at 9 am.</div>
+      <div class="turn"><b>Customer:</b> Tuesday at 2 works.</div>
+      <div class="turn"><b class="ag">Agent:</b> Done. You'll get a confirmation text in a minute.</div>
+    </div>
+  </div>
+<script>
+  const w = document.getElementById('wave');
+  for (let i = 0; i < 64; i++) {
+    const h = 6 + Math.round(20 * Math.abs(Math.sin(i * 0.55) * Math.cos(i * 0.21)));
+    const el = document.createElement('i');
+    el.style.height = h + 'px';
+    if (i < 16) el.className = 'p';
+    w.appendChild(el);
+  }
+</script>
+</body>
+</html>

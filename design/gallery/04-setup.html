@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Setup</title>
+<link rel="stylesheet" href="base.css">
+<style>
+  body { display: grid; grid-template-columns: 1fr 600px; gap: 56px; align-items: center; }
+  .copy h1 { font-size: 52px; }
+  .steps { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; }
+  .step { display: flex; gap: 18px; align-items: center; padding: 18px 22px; }
+  .num { width: 44px; height: 44px; border-radius: 50%; flex: none; display: grid; place-items: center; font-weight: 800; font-size: 19px; background: var(--brand); }
+  .step b { font-size: 19px; display: block; }
+  .step span { font-size: 15.5px; color: var(--muted); display: block; margin-top: 3px; line-height: 1.4; }
+
+  .app { background: #171717; border: 1px solid #333; border-radius: 18px; overflow: hidden; box-shadow: 0 40px 120px rgba(0,0,0,0.6); font-size: 14.5px; color: #ebebeb; }
+  .bar { height: 46px; display: flex; align-items: center; padding: 0 18px; border-bottom: 1px solid #2c2c2c; color: #999; font-size: 14px; }
+  .bar b { color: #ebebeb; font-weight: 600; margin-left: 6px; }
+  .tabs { display: flex; gap: 22px; padding: 14px 22px 0; border-bottom: 1px solid #2c2c2c; color: #999; font-weight: 500; }
+  .tabs div { padding-bottom: 10px; }
+  .tabs .on { color: #ebebeb; border-bottom: 2px solid #ebebeb; }
+  .sec { padding: 16px 22px; border-bottom: 1px solid #262626; }
+  .sec h4 { font-size: 15.5px; font-weight: 700; margin-bottom: 10px; }
+  .row { display: flex; align-items: center; gap: 10px; padding: 3px 0; color: #ccc; }
+  .row .k { width: 150px; color: #8a8a8a; }
+  .input { flex: 1; background: #222; border: 1px solid #383838; border-radius: 8px; padding: 8px 12px; color: #aaa; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .btn { padding: 8px 14px; border-radius: 8px; background: #2a2a2a; border: 1px solid #3a3a3a; color: #ebebeb; font-weight: 600; font-size: 13.5px; white-space: nowrap; }
+  .btn.pri { background: linear-gradient(90deg, #2f6bff, #6a3bff); border-color: transparent; }
+  .ok { display: inline-flex; align-items: center; gap: 7px; color: #4fe0b0; font-weight: 600; }
+  .ok::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #22d39b; box-shadow: 0 0 10px #22d39b; }
+  .agents { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin: 8px 0 12px; }
+  .cb { display: flex; align-items: center; gap: 8px; color: #ccc; }
+  .cb i { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #555; display: grid; place-items: center; }
+  .cb i.on { background: #2f6bff; border-color: #2f6bff; }
+  .cb i.on::after { content: ''; width: 7px; height: 4px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px, -1px); }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <div class="kicker">Setup</div>
+    <h1>Live in <span class="grad">three steps</span>,<br>from one settings tab</h1>
+    <p class="lead" style="font-size:20px">No webhook URLs to copy, no automation service to host.</p>
+    <div class="steps">
+      <div class="card step"><div class="num">1</div><div><b>Paste your Retell key</b><span>The key with the Webhook badge. It calls the API and verifies every webhook.</span></div></div>
+      <div class="card step"><div class="num">2</div><div><b>Tick agents, press one button</b><span>The app registers its webhook on each agent through the Retell API.</span></div></div>
+      <div class="card step"><div class="num">3</div><div><b>History arrives on its own</b><span>The first sync backfills the last 30 days. Resync re-reads any period on demand.</span></div></div>
+    </div>
+  </div>
+
+  <div class="app">
+    <div class="bar">Settings / Apps /<b>Retell Sync for Twenty</b></div>
+    <div class="tabs"><div>General</div><div class="on">Retell</div><div>Settings</div></div>
+    <div class="sec">
+      <h4>Retell API key</h4>
+      <div class="row"><div class="input">key_••••••••••••••••••••3f9a</div><div class="btn">Save key</div></div>
+    </div>
+    <div class="sec">
+      <h4>Retell connection</h4>
+      <div class="row"><div class="k">Status</div><span class="ok">Connected</span></div>
+      <div class="row"><div class="k">Last webhook</div>2 minutes ago</div>
+      <div class="row"><div class="k">Last sync</div>12 created, 30 updated</div>
+      <div class="row" style="margin-top:8px"><div class="btn">Sync now</div></div>
+    </div>
+    <div class="sec">
+      <h4>Resync</h4>
+      <div class="row"><div class="input" style="flex:none;width:90px;font-family:inherit">30</div>days<div class="btn" style="margin-left:6px">Resync</div></div>
+    </div>
+    <div class="sec" style="border-bottom:0">
+      <h4>Webhook</h4>
+      <div class="agents">
+        <div class="cb"><i class="on"></i>Booking assistant</div>
+        <div class="cb"><i class="on"></i>Support line</div>
+        <div class="cb"><i class="on"></i>SMS follow-up</div>
+        <div class="cb"><i></i>Test agent</div>
+      </div>
+      <div class="row"><div class="btn pri">Set webhook on agents</div><div class="btn">Remove webhook</div></div>
+    </div>
+  </div>
+</body>
+</html>

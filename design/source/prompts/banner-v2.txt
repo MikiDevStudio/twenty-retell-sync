@@ -1,0 +1,21 @@
+Recreate the attached banner as a new version. Keep its visual style exactly: same vivid dark-blue / magenta / violet glowing gradient background, the same glossy white glassmorphism cards with soft glow, the same rounded bold sans-serif typography, the same colourful round gradient icons, dotted connector lines and curved arrows forming a circular cycle around the centre card, the same overall layout and 16:9 composition. Keep the centre card logos exactly as they are: the Retell dotted-circle logo with the word "Retell", a plus sign, and the black square Twenty "20" logo.
+
+Change only the text and the meaning of the elements so they describe what the product really does: it syncs Retell AI calls and chats into Twenty CRM. Spell every word exactly as written below, no other text anywhere.
+
+Centre card:
+- Title: "Retell Integration" on the first line, "with Twenty CRM" on the second line ("Twenty" in magenta gradient, "CRM" in blue, like the original).
+- Subtitle: "Every AI call and chat, synced into your CRM"
+
+Five cycle steps around the centre, clockwise from the top, each a white glass card with a number, a bold title and a short grey description:
+1. Top card, purple person icon: "1. Call or chat" / "Your Retell agent talks to a customer"
+2. Right card, red phone icon: "2. Webhook" / "Signed and verified, lands in seconds"
+3. Bottom-right card, purple document icon: "3. Transcript" / "Full transcript and recording link"
+4. Bottom-left card, orange sparkle icon: "4. Summary" / "Summary, sentiment and outcome"
+5. Left card, green sync icon: "5. CRM record" / "Linked to the right Person and Opportunity"
+
+Left side: the translucent Twenty CRM app panel with the black "20" logo and the title "Twenty CRM"; its menu items are exactly: "People", "Opportunities", "Retell Calls" (highlighted), "Retell Chats".
+
+Right side, top: keep the "AI Call by Retell" call card with the timer "00:24", the colourful waveform and the mic / red hang-up / more buttons.
+Right side, bottom: keep the transcript card with three timestamped lines: "00:01" "Hi! How can I help you today?", "00:24" "I'd like to move my appointment.", "01:12" "Done, Tuesday at 2 pm works."
+
+Small glass chips along the bottom and top-left (instead of the old Tasks / Notes / Follow-ups / Contacts chips), each with a small coloured icon: "Contacts" (top left, people icon), "Do not call" (bottom left, red no-entry icon), "Scheduled sync" (bottom middle, blue clock icon), "No Zapier needed" (bottom right, green check icon).

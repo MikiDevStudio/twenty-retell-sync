@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "twenty": {
+      "type": "http",
+      "url": "https://<your-twenty-server>/mcp",
+      "headersHelper": "python scripts/mcp_headers.py TWENTY_API_KEY"
+    },
+    "retell": {
+      "type": "http",
+      "url": "https://mcp.retellai.com",
+      "headersHelper": "python scripts/mcp_headers.py RETELL_API_KEY"
+    }
+  }
+}

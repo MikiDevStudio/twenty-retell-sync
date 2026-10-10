@@ -1,0 +1,94 @@
+# --- Secrets -----------------------------------------------------------------
+# The negation must come after the patterns it exempts, or .env.example is
+# swallowed by .env.* and the repo loses the one file that documents the rest.
+.env
+.env.*
+*.pem
+*.key
+!.env.example
+
+# --- Agent config ------------------------------------------------------------
+# The rest of .claude/ is committed on purpose: a clone should bring the
+# project's skills, rules, and permissions with it. Only personal files are cut.
+.claude/settings.local.json
+CLAUDE.local.md
+# (never create one: it disables AGENTS.md, see VERIFIED I3)
+.codex/*.local.*
+.cursor/*.local.*
+
+# --- Dependencies ------------------------------------------------------------
+node_modules/
+.pnp.*
+vendor/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# --- Build output ------------------------------------------------------------
+dist/
+build/
+out/
+target/
+.next/
+.nuxt/
+*.tsbuildinfo
+
+# --- Caches and test artifacts -----------------------------------------------
+.cache/
+.turbo/
+.parcel-cache/
+coverage/
+.nyc_output/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Logs and local databases ------------------------------------------------
+*.log
+npm-debug.log*
+yarn-error.log*
+*.sqlite
+*.sqlite3
+*.db
+
+# --- Editors and OS ----------------------------------------------------------
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Browser extension builds ------------------------------------------------
+# Store-upload archives are rebuilt from source. The signing key is already
+# covered by *.pem in the secrets block above.
+*.zip
+*.crx
+*.xpi
+web-ext-artifacts/
+
+# --- Twenty app --------------------------------------------------------------
+.twenty/
+.yarn/*
+generated/
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Raw image generations (kie.ai results and sidecars); the chosen ones are copied to design/source/
+design/source/generated/
+
+# --- Kept local, not published -----------------------------------------------
+# Personal agent setup, the MCP config with a real server address (template:
+# .mcp.json.example), working notes and copies of third-party docs.
+.mcp.json
+.claude/settings.json
+.claude/project-stamp.json
+.claude/rules/caveman.md
+docs/
+reference/
+design/source/*-v[0-9].png

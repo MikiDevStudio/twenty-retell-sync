@@ -1,0 +1,3 @@
+Redesign the attached app icon. Keep its style exactly: pure black square background, eight glossy round dots arranged in a ring (two on top, two on each side, two at the bottom) with the same gradient from bright cyan at the top through blue to violet at the bottom, soft subtle glow, flat modern look, perfectly centred, generous padding.
+
+Replace the white "20" glyph in the middle with a new white glyph of the same weight and size: two bold rounded circular arrows chasing each other (a "sync" symbol), and inside them a small white phone handset. Clean geometric strokes with rounded ends, no text, no letters, no numbers, nothing else in the image.

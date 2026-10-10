@@ -1,0 +1,7 @@
+Edit the attached banner. Keep everything exactly as it is (layout, style, colours, every card, icon, chip and text) except the title in the centre card.
+
+Change the two-line title to:
+first line: "Retell Sync" (dark navy, same bold font)
+second line: "for Twenty CRM" ("for" in dark navy, "Twenty" in the same magenta gradient, "CRM" in the same blue, like now).
+
+Keep the logos above the title (Retell dotted circle with the word "Retell", plus sign, black "20" square) and the subtitle "Every AI call and chat, synced into your CRM" unchanged. No other changes.

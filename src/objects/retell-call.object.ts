@@ -1,0 +1,84 @@
+import { defineObject, FieldType, OnDeleteAction, RelationType } from 'twenty-sdk/define';
+
+import { OPPORTUNITY_OBJECT_UNIVERSAL_IDENTIFIER, PERSON_OBJECT_UNIVERSAL_IDENTIFIER } from 'src/constants/standard-objects';
+import {
+  CALL_FIELD_IDS as F,
+  CALL_OBJECT_UNIVERSAL_IDENTIFIER,
+  CALL_OPPORTUNITY_FIELD_UNIVERSAL_IDENTIFIER,
+  CALL_PERSON_FIELD_UNIVERSAL_IDENTIFIER,
+  OPPORTUNITY_CALLS_FIELD_UNIVERSAL_IDENTIFIER,
+  PERSON_CALLS_FIELD_UNIVERSAL_IDENTIFIER,
+} from 'src/constants/universal-identifiers';
+import { SENTIMENT_OPTIONS } from 'src/objects/sentiment-options';
+
+export default defineObject({
+  universalIdentifier: CALL_OBJECT_UNIVERSAL_IDENTIFIER,
+  nameSingular: 'retellCall',
+  namePlural: 'retellCalls',
+  labelSingular: 'Retell Call',
+  labelPlural: 'Retell Calls',
+  description: 'A voice call handled by a Retell AI agent',
+  icon: 'IconPhoneCall',
+  fields: [
+    { universalIdentifier: F.callId, name: 'callId', type: FieldType.TEXT, label: 'Call ID', icon: 'IconKey' },
+    { universalIdentifier: F.agentId, name: 'agentId', type: FieldType.TEXT, label: 'Agent ID', icon: 'IconRobot' },
+    { universalIdentifier: F.agentName, name: 'agentName', type: FieldType.TEXT, label: 'Agent name', icon: 'IconRobot' },
+    {
+      universalIdentifier: F.direction,
+      name: 'direction',
+      type: FieldType.SELECT,
+      label: 'Direction',
+      icon: 'IconArrowsExchange',
+      options: [
+        { value: 'INBOUND', label: 'Inbound', position: 0, color: 'blue' },
+        { value: 'OUTBOUND', label: 'Outbound', position: 1, color: 'green' },
+      ],
+    },
+    { universalIdentifier: F.callType, name: 'callType', type: FieldType.TEXT, label: 'Call type', icon: 'IconPhone' },
+    { universalIdentifier: F.callStatus, name: 'callStatus', type: FieldType.TEXT, label: 'Call status', icon: 'IconActivity' },
+    { universalIdentifier: F.fromNumber, name: 'fromNumber', type: FieldType.TEXT, label: 'From number', icon: 'IconPhoneOutgoing' },
+    { universalIdentifier: F.toNumber, name: 'toNumber', type: FieldType.TEXT, label: 'To number', icon: 'IconPhoneIncoming' },
+    { universalIdentifier: F.startedAt, name: 'startedAt', type: FieldType.DATE_TIME, label: 'Started at', icon: 'IconClock' },
+    { universalIdentifier: F.endedAt, name: 'endedAt', type: FieldType.DATE_TIME, label: 'Ended at', icon: 'IconClockStop' },
+    { universalIdentifier: F.durationMs, name: 'durationMs', type: FieldType.NUMBER, label: 'Duration (ms)', icon: 'IconHourglass' },
+    { universalIdentifier: F.disconnectionReason, name: 'disconnectionReason', type: FieldType.TEXT, label: 'Disconnection reason', icon: 'IconPhoneOff' },
+    { universalIdentifier: F.summary, name: 'summary', type: FieldType.TEXT, label: 'Summary', icon: 'IconFileDescription' },
+    { universalIdentifier: F.sentiment, name: 'sentiment', type: FieldType.SELECT, label: 'User sentiment', icon: 'IconMoodSmile', options: SENTIMENT_OPTIONS },
+    { universalIdentifier: F.successful, name: 'successful', type: FieldType.BOOLEAN, label: 'Successful', icon: 'IconCheck', isNullable: true, defaultValue: null },
+    { universalIdentifier: F.inVoicemail, name: 'inVoicemail', type: FieldType.BOOLEAN, label: 'In voicemail', icon: 'IconVoicemail', isNullable: true, defaultValue: null },
+    { universalIdentifier: F.transcript, name: 'transcript', type: FieldType.RICH_TEXT, label: 'Transcript', icon: 'IconMessages' },
+    { universalIdentifier: F.recording, name: 'recording', type: FieldType.LINKS, label: 'Recording', icon: 'IconPlayerPlay' },
+    { universalIdentifier: F.analysis, name: 'analysis', type: FieldType.RAW_JSON, label: 'Custom analysis data', icon: 'IconBraces' },
+    { universalIdentifier: F.dynamicVariables, name: 'dynamicVariables', type: FieldType.RAW_JSON, label: 'Dynamic variables', icon: 'IconBraces' },
+    { universalIdentifier: F.metadata, name: 'metadata', type: FieldType.RAW_JSON, label: 'Metadata', icon: 'IconBraces' },
+    { universalIdentifier: F.costCents, name: 'costCents', type: FieldType.NUMBER, label: 'Cost (cents)', icon: 'IconCoin' },
+    {
+      universalIdentifier: CALL_PERSON_FIELD_UNIVERSAL_IDENTIFIER,
+      name: 'person',
+      type: FieldType.RELATION,
+      label: 'Person',
+      icon: 'IconUser',
+      relationTargetObjectMetadataUniversalIdentifier: PERSON_OBJECT_UNIVERSAL_IDENTIFIER,
+      relationTargetFieldMetadataUniversalIdentifier: PERSON_CALLS_FIELD_UNIVERSAL_IDENTIFIER,
+      universalSettings: {
+        relationType: RelationType.MANY_TO_ONE,
+        onDelete: OnDeleteAction.SET_NULL,
+        joinColumnName: 'personId',
+      },
+    },
+    {
+      universalIdentifier: CALL_OPPORTUNITY_FIELD_UNIVERSAL_IDENTIFIER,
+      name: 'opportunity',
+      type: FieldType.RELATION,
+      label: 'Opportunity',
+      icon: 'IconTargetArrow',
+      relationTargetObjectMetadataUniversalIdentifier: OPPORTUNITY_OBJECT_UNIVERSAL_IDENTIFIER,
+      relationTargetFieldMetadataUniversalIdentifier: OPPORTUNITY_CALLS_FIELD_UNIVERSAL_IDENTIFIER,
+      universalSettings: {
+        relationType: RelationType.MANY_TO_ONE,
+        onDelete: OnDeleteAction.SET_NULL,
+        joinColumnName: 'opportunityId',
+      },
+    },
+  ],
+});
