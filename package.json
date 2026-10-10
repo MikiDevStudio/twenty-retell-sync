@@ -1,13 +1,30 @@
 {
   "name": "twenty-retell-sync",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "license": "MIT",
+  "author": "MikiDev Studio",
+  "homepage": "https://github.com/MikiDevStudio/twenty-retell-sync#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikiDevStudio/twenty-retell-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MikiDevStudio/twenty-retell-sync/issues"
+  },
   "engines": {
     "node": "^24.5.0",
     "npm": "please-use-yarn",
     "yarn": ">=4.0.2"
   },
-  "keywords": [],
+  "keywords": [
+    "twenty-app",
+    "twenty",
+    "twenty-crm",
+    "retell",
+    "retell-ai",
+    "voice-ai",
+    "crm"
+  ],
   "packageManager": "yarn@4.13.0",
   "scripts": {
     "twenty": "twenty",
