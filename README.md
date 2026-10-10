@@ -160,6 +160,9 @@ so type the key after it by hand.
 - **PII scrubbing.** For agents set to "Everything except PII", Retell returns scrubbed copies, and the app stores those: the
   transcript, summary and analysis hold Retell's placeholders (for example `[person name 1]`).
 - **Retell last contacted at** on Person holds the start of the newest Retell call or chat with that person. It only moves forward.
+- **Summary tab shows "No Data" after install.** A Twenty tab that stayed open during the install can cache the tab's widget in
+  a form Twenty does not render ([twentyhq/twenty#27771](https://github.com/twentyhq/twenty/issues/27771)), and a reload keeps it.
+  Open the record page layout editor and press **Reset**, or clear the site data for your Twenty domain in the browser and sign in again.
 
 ## Development
 
