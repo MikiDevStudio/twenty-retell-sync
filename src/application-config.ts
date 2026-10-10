@@ -18,6 +18,8 @@ export default defineApplication({
   // Marketplace listing. The About tab is README.md; the gallery images are rendered from design/gallery.
   author: 'MikiDev Studio',
   category: 'Communication',
+  websiteUrl: 'https://github.com/MikiDevStudio/twenty-retell-sync',
+  issueReportUrl: 'https://github.com/MikiDevStudio/twenty-retell-sync/issues',
   logo: 'public/logo.png',
   galleryImages: [
     'public/gallery/01-cover.png',
