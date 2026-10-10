@@ -44,7 +44,8 @@ Re-deliveries and out-of-order events are safe: one record per call, and a fille
 | Opportunity | Retell calls and chats |
 | Call and chat pages | **Summary** tab, right after Home |
 | Sidebar | **Retell Analytics** page with a Calls tab and a Chats tab |
-| Retell Calls | **Connection** (connected, not connected, error), **Transferred** and **Latency p50** |
+| Retell Calls | **Connection** (connected, not connected, error), **Transferred**, **Latency p50**, **Duration (s)** and **Cost ($)** |
+| Retell Chats | **Duration (s)** and **Cost ($)** |
 | Settings > Apps | **Retell** tab: the control panel |
 | Workflows | **Retell: call person**, **Retell: send SMS**, **Retell: refresh call**, **Retell: set do-not-call** actions |
 | AI chat and MCP | The same four actions as tools, and the **Retell calls and SMS** skill |
@@ -74,8 +75,8 @@ That's it. The first sync loads the last 30 days of history.
   after deleting records in Twenty or after regenerating the analysis in Retell (Retell sends no webhook for that). It never creates
   duplicates, runs in chunks every 5 minutes and shows how many records it created and updated. Calls Retell has already deleted
   cannot come back, and a field you now exclude is not removed from existing records. Run it once after updating to a version
-  that adds fields (**Connection**, **Transferred** and **Latency p50** on calls): older calls keep those empty, and the picked-up
-  rate counts them as unknown, until then.
+  that adds fields (**Connection**, **Transferred**, **Latency p50**, **Duration (s)** and **Cost ($)**): older records keep those
+  empty until then, and the picked-up rate reads low because their empty **Connection** is counted as not picked up.
 - **Sync schedule**: how often the pull sync runs (minimum 5 minutes). Webhooks deliver new calls within seconds; the schedule only
   closes gaps.
 - **Webhook**: registers `https://<your-twenty-host>/s/retell/webhook` on the ticked agents through the Retell API. **Remove webhook**
@@ -166,8 +167,9 @@ so type the key after it by hand.
 - **PII scrubbing.** For agents set to "Everything except PII", Retell returns scrubbed copies, and the app stores those: the
   transcript, summary and analysis hold Retell's placeholders (for example `[person name 1]`).
 - **Retell last contacted at** on Person holds the start of the newest Retell call or chat with that person. It only moves forward.
-- **Retell Analytics** shows the last 30 days on every widget. The picked-up rate comes from **Connection**, which the app derives from
-  Retell's disconnection reason; a reason Retell has no documented status for leaves it empty. There is no concurrency or credit
+- **Retell Analytics** shows the last 30 days on every widget, duration in seconds and cost in dollars. The picked-up rate is the share
+  of calls whose **Connection** is *Connected* among all calls of the period, empty ones included, inbound and failed calls too. The app
+  derives **Connection** from Retell's disconnection reason; a reason Retell has no documented status for leaves it empty. There is no concurrency or credit
   balance chart: Retell's public API reports no balance, and concurrency is a live value without history. A role needs read access
   to Retell Calls and Retell Chats to see the charts.
 - **Summary tab shows "No Data" after install.** A Twenty tab that stayed open during the install can cache the tab's widget in

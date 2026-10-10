@@ -58,6 +58,8 @@ export const CALL_FIELD_IDS = {
   connection: 'b0c0407a-90b0-42c1-9880-b2e7e0c6eca7',
   transferred: '0cc029a5-560a-46fd-abe6-daf0c85f6168',
   latencyP50Ms: '6a04598e-ef0f-4162-9387-635a50d84163',
+  durationSeconds: '4579eebf-9059-49db-bf29-2c581bddcfa7',
+  costDollars: 'd33b949f-e170-4492-857f-763d4159ec29',
 } as const;
 
 export const CHAT_FIELD_IDS = {
@@ -78,6 +80,8 @@ export const CHAT_FIELD_IDS = {
   dynamicVariables: '70bbe384-205b-4fb7-a53a-cdc352ce0ef0',
   metadata: 'a167ffd8-e2ce-46c1-bd8c-35436d98e1c8',
   costCents: '873b4a0c-2e9e-4070-bd3c-22d252f70aa1',
+  durationSeconds: '491a908b-2a9c-458e-b06e-963371114e1a',
+  costDollars: 'ab199fe3-4796-4e85-a02a-9a44809f2621',
 } as const;
 
 export const SYNC_CRON_FN_UNIVERSAL_IDENTIFIER = '597f5991-4b83-40f7-a614-4856bae5f13a';

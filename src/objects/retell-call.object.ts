@@ -56,6 +56,8 @@ export default defineObject({
     },
     { universalIdentifier: F.transferred, name: 'transferred', type: FieldType.BOOLEAN, label: 'Transferred', icon: 'IconArrowForwardUp', isNullable: true, defaultValue: null },
     { universalIdentifier: F.latencyP50Ms, name: 'latencyP50Ms', type: FieldType.NUMBER, label: 'Latency p50 (ms)', icon: 'IconGauge' },
+    { universalIdentifier: F.durationSeconds, name: 'durationSeconds', type: FieldType.NUMBER, label: 'Duration (s)', icon: 'IconHourglass' },
+    { universalIdentifier: F.costDollars, name: 'costDollars', type: FieldType.NUMBER, label: 'Cost ($)', icon: 'IconCoin' },
     { universalIdentifier: F.summary, name: 'summary', type: FieldType.TEXT, label: 'Summary', icon: 'IconFileDescription' },
     { universalIdentifier: F.sentiment, name: 'sentiment', type: FieldType.SELECT, label: 'User sentiment', icon: 'IconMoodSmile', options: SENTIMENT_OPTIONS },
     { universalIdentifier: F.successful, name: 'successful', type: FieldType.BOOLEAN, label: 'Successful', icon: 'IconCheck', isNullable: true, defaultValue: null },

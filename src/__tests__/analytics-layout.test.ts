@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
+import { CALL_FIELD_IDS, CHAT_FIELD_IDS } from 'src/constants/universal-identifiers';
 import layout from 'src/page-layouts/retell-analytics.page-layout';
 
 const tabs = layout.config.tabs ?? [];
@@ -56,6 +57,16 @@ describe('Retell Analytics page layout', () => {
     for (const widget of widgets) {
       const configuration = widget.configuration as { configurationType: string; layout?: string };
       if (configuration.configurationType === 'BAR_CHART') expect(configuration.layout, widget.title).toBe('VERTICAL');
+    }
+  });
+});
+
+describe('Retell Analytics units', () => {
+  it('charts seconds and dollars, never the raw milliseconds or cents', () => {
+    const raw = [CALL_FIELD_IDS.durationMs, CALL_FIELD_IDS.costCents, CHAT_FIELD_IDS.durationMs, CHAT_FIELD_IDS.costCents];
+    for (const widget of widgets) {
+      const field = (widget.configuration as { aggregateFieldMetadataUniversalIdentifier?: string }).aggregateFieldMetadataUniversalIdentifier;
+      expect(raw, widget.title).not.toContain(field);
     }
   });
 });

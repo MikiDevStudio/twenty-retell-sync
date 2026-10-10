@@ -25,6 +25,7 @@ const PERIOD_DAYS = 30;
 
 type Cell = { row: number; column: number; rowSpan: number; columnSpan: number };
 type TileOptions = {
+  prefix?: string;
   suffix?: string;
   ratioAggregateConfig?: { fieldMetadataUniversalIdentifier: string; optionValue: string };
 };
@@ -123,9 +124,9 @@ const chats = chartsFor(CHAT_OBJECT_UNIVERSAL_IDENTIFIER, CHAT_F.startedAt);
 
 const callWidgets: PageLayoutWidgetManifest[] = [
   calls.count(W.callsCount, 'Calls', { row: 0, column: 0, rowSpan: 3, columnSpan: 3 }),
-  calls.tile(W.callsAvgDuration, 'Avg duration', { row: 0, column: 3, rowSpan: 3, columnSpan: 3 }, CALL_F.durationMs, AggregateOperations.AVG, { suffix: ' ms' }),
+  calls.tile(W.callsAvgDuration, 'Avg duration', { row: 0, column: 3, rowSpan: 3, columnSpan: 3 }, CALL_F.durationSeconds, AggregateOperations.AVG, { suffix: ' s' }),
   calls.tile(W.callsLatencyP50, 'Latency p50', { row: 0, column: 6, rowSpan: 3, columnSpan: 3 }, CALL_F.latencyP50Ms, AggregateOperations.AVG, { suffix: ' ms' }),
-  calls.tile(W.callsTotalCost, 'Total cost', { row: 0, column: 9, rowSpan: 3, columnSpan: 3 }, CALL_F.costCents, AggregateOperations.SUM, { suffix: ' cents' }),
+  calls.tile(W.callsTotalCost, 'Total cost', { row: 0, column: 9, rowSpan: 3, columnSpan: 3 }, CALL_F.costDollars, AggregateOperations.SUM, { prefix: '$' }),
 
   calls.count(W.callsPickedUpRate, 'Picked up rate', { row: 3, column: 0, rowSpan: 3, columnSpan: 4 }, {
     ratioAggregateConfig: { fieldMetadataUniversalIdentifier: CALL_F.connection, optionValue: 'CONNECTED' },
@@ -145,8 +146,8 @@ const callWidgets: PageLayoutWidgetManifest[] = [
 
 const chatWidgets: PageLayoutWidgetManifest[] = [
   chats.count(W.chatsCount, 'Chats', { row: 0, column: 0, rowSpan: 3, columnSpan: 4 }),
-  chats.tile(W.chatsAvgDuration, 'Avg duration', { row: 0, column: 4, rowSpan: 3, columnSpan: 4 }, CHAT_F.durationMs, AggregateOperations.AVG, { suffix: ' ms' }),
-  chats.tile(W.chatsTotalCost, 'Total cost', { row: 0, column: 8, rowSpan: 3, columnSpan: 4 }, CHAT_F.costCents, AggregateOperations.SUM, { suffix: ' cents' }),
+  chats.tile(W.chatsAvgDuration, 'Avg duration', { row: 0, column: 4, rowSpan: 3, columnSpan: 4 }, CHAT_F.durationSeconds, AggregateOperations.AVG, { suffix: ' s' }),
+  chats.tile(W.chatsTotalCost, 'Total cost', { row: 0, column: 8, rowSpan: 3, columnSpan: 4 }, CHAT_F.costDollars, AggregateOperations.SUM, { prefix: '$' }),
 
   chats.perDay(W.chatsPerDay, 'Chats per day', { row: 3, column: 0, rowSpan: 6, columnSpan: 12 }),
 

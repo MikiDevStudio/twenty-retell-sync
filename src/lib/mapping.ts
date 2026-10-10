@@ -10,6 +10,13 @@ type Retell = Record<string, any>;
 const iso = (ms: unknown): string | null =>
   typeof ms === 'number' && Number.isFinite(ms) ? new Date(ms).toISOString() : null;
 
+// Readable twins of Retell's milliseconds and cents, so a chart can show seconds and dollars.
+const seconds = (ms: unknown): number | null =>
+  typeof ms === 'number' && Number.isFinite(ms) ? Math.round(ms / 100) / 10 : null;
+
+const dollars = (cents: unknown): number | null =>
+  typeof cents === 'number' && Number.isFinite(cents) ? Math.round(cents * 100) / 10000 : null;
+
 const upper = (value: unknown): string | null =>
   typeof value === 'string' && value ? value.toUpperCase() : null;
 
@@ -77,7 +84,8 @@ export const mapCall = (call: Retell, exclude: ReadonlySet<string>): Json => {
   const analysis = pick(call, 'call_analysis') ?? {};
   const recordingUrl = pick(call, 'recording_url');
   const playable = exclude.has('recording') ? null : recordingUrl;
-  const startedAt = iso(call.start_timestamp);
+  // An unconnected dial may carry no start; the end is seconds away, and every chart is bounded by this date.
+  const startedAt = iso(call.start_timestamp) ?? iso(call.end_timestamp);
 
   return withoutExcluded(
     {
@@ -95,6 +103,7 @@ export const mapCall = (call: Retell, exclude: ReadonlySet<string>): Json => {
       startedAt,
       endedAt: iso(call.end_timestamp),
       durationMs: call.duration_ms ?? null,
+      durationSeconds: seconds(call.duration_ms),
       disconnectionReason: call.disconnection_reason ?? null,
       connection: connectionOf(call.disconnection_reason),
       transferred: transferredOf(call.disconnection_reason),
@@ -109,6 +118,7 @@ export const mapCall = (call: Retell, exclude: ReadonlySet<string>): Json => {
       dynamicVariables: pick(call, 'retell_llm_dynamic_variables') ?? null,
       metadata: pick(call, 'metadata') ?? null,
       costCents: call.call_cost?.combined_cost ?? null,
+      costDollars: dollars(call.call_cost?.combined_cost),
     },
     exclude,
   );
@@ -135,7 +145,7 @@ const chatDuration = (chat: Retell): number | null =>
 
 export const mapChat = (chat: Retell, exclude: ReadonlySet<string>): Json => {
   const analysis = pick(chat, 'chat_analysis') ?? {};
-  const startedAt = iso(chat.start_timestamp);
+  const startedAt = iso(chat.start_timestamp) ?? iso(chat.end_timestamp);
   const userNumber = chatPhone(chat);
 
   return withoutExcluded(
@@ -152,6 +162,7 @@ export const mapChat = (chat: Retell, exclude: ReadonlySet<string>): Json => {
       startedAt,
       endedAt: iso(chat.end_timestamp),
       durationMs: chatDuration(chat),
+      durationSeconds: seconds(chatDuration(chat)),
       summary: analysis.chat_summary ?? null,
       sentiment: sentiment(analysis.user_sentiment),
       successful: analysis.chat_successful ?? null,
@@ -160,6 +171,7 @@ export const mapChat = (chat: Retell, exclude: ReadonlySet<string>): Json => {
       dynamicVariables: pick(chat, 'retell_llm_dynamic_variables') ?? null,
       metadata: pick(chat, 'metadata') ?? null,
       costCents: chat.chat_cost?.combined_cost ?? null,
+      costDollars: dollars(chat.chat_cost?.combined_cost),
     },
     exclude,
   );

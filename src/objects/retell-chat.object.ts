@@ -37,6 +37,8 @@ export default defineObject({
     { universalIdentifier: F.dynamicVariables, name: 'dynamicVariables', type: FieldType.RAW_JSON, label: 'Dynamic variables', icon: 'IconBraces' },
     { universalIdentifier: F.metadata, name: 'metadata', type: FieldType.RAW_JSON, label: 'Metadata', icon: 'IconBraces' },
     { universalIdentifier: F.costCents, name: 'costCents', type: FieldType.NUMBER, label: 'Cost (cents)', icon: 'IconCoin' },
+    { universalIdentifier: F.durationSeconds, name: 'durationSeconds', type: FieldType.NUMBER, label: 'Duration (s)', icon: 'IconHourglass' },
+    { universalIdentifier: F.costDollars, name: 'costDollars', type: FieldType.NUMBER, label: 'Cost ($)', icon: 'IconCoin' },
     {
       universalIdentifier: CHAT_PERSON_FIELD_UNIVERSAL_IDENTIFIER,
       name: 'person',

@@ -116,6 +116,30 @@ describe('mapping', () => {
     expect(data).toHaveProperty('transferred', false);
   });
 
+  it('gives a call a start time from its end when Retell sends no start (an unconnected dial)', () => {
+    const end = 1_790_000_005_000;
+    expect(mapCall({ call_id: 's1', end_timestamp: end }, new Set()).startedAt).toBe(new Date(end).toISOString());
+    expect(mapCall({ call_id: 's2', start_timestamp: end - 4000, end_timestamp: end }, new Set()).startedAt).toBe(
+      new Date(end - 4000).toISOString(),
+    );
+    expect(mapCall({ call_id: 's3' }, new Set()).startedAt).toBeNull();
+    expect(mapChat({ chat_id: 's4', end_timestamp: end }, new Set()).startedAt).toBe(new Date(end).toISOString());
+  });
+
+  it('adds duration in seconds and cost in dollars next to the raw milliseconds and cents', () => {
+    expect(mapCall({ call_id: 'u1', duration_ms: 63902, call_cost: { combined_cost: 76.8483395 } }, new Set())).toMatchObject({
+      durationMs: 63902,
+      durationSeconds: 63.9,
+      costCents: 76.8483395,
+      costDollars: 0.7685,
+    });
+    expect(mapCall({ call_id: 'u2' }, new Set())).toMatchObject({ durationSeconds: null, costDollars: null });
+    expect(
+      mapChat({ chat_id: 'u3', start_timestamp: 1000, end_timestamp: 4500, chat_cost: { combined_cost: 8.62 } }, new Set()),
+    ).toMatchObject({ durationSeconds: 3.5, costDollars: 0.0862 });
+    expect(mapChat({ chat_id: 'u4' }, new Set())).toMatchObject({ durationSeconds: null, costDollars: null });
+  });
+
   it('maps the agent name and a duration for chats, as calls have', () => {
     const chat = mapChat({ chat_id: 'x', agent_name: 'Agent', start_timestamp: 1000, end_timestamp: 4500 }, new Set());
     expect(chat).toMatchObject({ agentName: 'Agent', durationMs: 3500 });
