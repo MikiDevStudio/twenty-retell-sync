@@ -12,9 +12,10 @@ describe('Retell Analytics page layout', () => {
     expect(layout.success).toBe(true);
   });
 
-  it('is a standalone page with a Calls tab and a Chats tab', () => {
-    expect(layout.config.type).toBe('STANDALONE_PAGE');
-    expect(tabs.map((tab) => tab.title)).toEqual(['Calls', 'Chats']);
+  it('is a dashboard layout with a Calls tab and a Chats tab that name the period', () => {
+    expect(layout.config.type).toBe('DASHBOARD');
+    expect(layout.config.objectUniversalIdentifier).toBe('20202020-3840-4b6d-9425-0c5188b05ca8');
+    expect(tabs.map((tab) => tab.title)).toEqual(['Calls · last 30 days', 'Chats · last 30 days']);
   });
 
   it('gives every entity its own universal identifier', () => {

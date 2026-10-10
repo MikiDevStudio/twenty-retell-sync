@@ -15,8 +15,9 @@ trademarks of their owners, used here only to name the services this app connect
 - **Linked to your CRM.** Each call finds its **Person** by phone number and, when it can tell, its **Opportunity**. They show up
   on the Person and Opportunity pages.
 - **A Summary tab.** Every call and chat page opens with the summary, a player for the recording and a clean transcript.
-- **An analytics page.** A **Retell Analytics** entry in the sidebar shows call and chat counts, duration, latency, cost, outcomes and
-  sentiment of the last 30 days as native Twenty charts, on two tabs (Calls and Chats).
+- **An analytics dashboard.** **Retell Analytics** appears in your Dashboards list and shows call and chat counts, duration, latency,
+  cost, outcomes and sentiment of the last 30 days as native Twenty charts, on two tabs (Calls and Chats). You can edit it like any
+  dashboard.
 - **Do-not-call in sync.** A caller who asks not to be called again is flagged on their Person. A flag set in Twenty goes to Retell.
 - **Nothing lost.** Webhooks deliver in seconds, and a scheduled sync backfills history and closes any gap a missed webhook leaves.
 - **Call and text from Twenty.** Workflow steps and AI tools place a call or start an SMS chat with a Person, and a built-in
@@ -43,7 +44,7 @@ Re-deliveries and out-of-order events are safe: one record per call, and a fille
 | Person | Retell calls and chats, **Retell do not call** (with *changed at* and *source*), **Retell contact ID**, **Retell last contacted at** |
 | Opportunity | Retell calls and chats |
 | Call and chat pages | **Summary** tab, right after Home |
-| Sidebar | **Retell Analytics** page with a Calls tab and a Chats tab |
+| Dashboards | **Retell Analytics** dashboard with a Calls tab and a Chats tab |
 | Retell Calls | **Connection** (connected, not connected, error), **Transferred**, **Latency p50**, **Duration (s)** and **Cost ($)** |
 | Retell Chats | **Duration (s)** and **Cost ($)** |
 | Settings > Apps | **Retell** tab: the control panel |
@@ -167,7 +168,9 @@ so type the key after it by hand.
 - **PII scrubbing.** For agents set to "Everything except PII", Retell returns scrubbed copies, and the app stores those: the
   transcript, summary and analysis hold Retell's placeholders (for example `[person name 1]`).
 - **Retell last contacted at** on Person holds the start of the newest Retell call or chat with that person. It only moves forward.
-- **Retell Analytics** shows the last 30 days on every widget, duration in seconds and cost in dollars. The picked-up rate is the share
+- **Retell Analytics** shows the last 30 days on every widget, duration in seconds and cost in dollars. The tab titles say the period;
+  if you change a widget's date filter in the dashboard editor, rename the tab too. The dashboard record is created after install and
+  removed on uninstall; if you delete it, an update of the app creates it again. The picked-up rate is the share
   of calls whose **Connection** is *Connected* among all calls of the period, empty ones included, inbound and failed calls too. The app
   derives **Connection** from Retell's disconnection reason; a reason Retell has no documented status for leaves it empty. There is no concurrency or credit
   balance chart: Retell's public API reports no balance, and concurrency is a live value without history. A role needs read access

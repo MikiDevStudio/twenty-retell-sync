@@ -28,3 +28,10 @@ Lessons from building on twenty-sdk 2.45.0. Each line says why; delete one only 
   chart widget", though the type marks the key optional. Seen applying the analytics page probe.
 - A widget filter in the manifest is `{ fieldMetadataUniversalIdentifier, operand, value, type }` with no `id`; a relative date is
   `operand: 'IS_RELATIVE', value: 'PAST_7_DAY'` (`<DIRECTION>_<N>_<UNIT>`), checked on local 2026-10-10.
+- A `DASHBOARD` page layout from the manifest is not in the Dashboards list: the list shows records of the `dashboard` object and a
+  manifest cannot create records. `post-install.ts` creates the record with `pageLayoutId` of the app layout (looked up by universal
+  identifier through `getPageLayouts`); `shouldRunOnVersionUpgrade: true` gives existing installs the record. Seen 2026-10-10.
+- `apply` and `dev:function:exec` do not run install hooks on the local remote (the latter fails authentication). To run them:
+  raise `version` in `package.json`, `yarn twenty app:publish --private -r local`, `yarn twenty app:install -r local` (the same version
+  answers "already installed"), then restore the version. Always `-r local`; `server` is a real workspace. The uninstall hook was not run:
+  uninstalling on local deletes its Retell data.

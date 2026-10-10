@@ -37,8 +37,10 @@ Usage: `README.md`. Design notes (`docs/`) and saved vendor docs (`reference/`) 
   `retellDoNotCallAt`; the trigger skips those, which is what stops the echo.
 - `src/lib/call-outcome.ts` (pure): `connection`, `transferred` and `latencyP50Ms` on a call, derived from `disconnection_reason` and
   `latency.e2e.p50`; a reason without a documented status maps to null. `src/page-layouts/retell-analytics.page-layout.ts` +
-  `src/navigation-menu-items/retell-analytics.navigation-menu-item.ts`: the Retell Analytics page (Calls and Chats tabs, native chart
-  widgets, `STANDALONE_PAGE` + `PAGE_LAYOUT` sidebar item, every widget limited to the last 30 days by `PERIOD_DAYS`). No front component.
+  `src/lib/dashboard.ts` + `dashboard-api.ts` + `logic-functions/post-install.ts` and `uninstall.ts`: the Retell Analytics dashboard (a
+  `DASHBOARD` page layout with Calls and Chats tabs of native chart widgets, every widget limited to the last 30 days by `PERIOD_DAYS`).
+  A manifest cannot create the `dashboard` record the Dashboards list shows, so the post-install hook (also on upgrades, idempotent)
+  creates it and the uninstall hook removes it. No front component, no sidebar item.
 - Actions for Twenty's AI and workflows (#17): one logic function carries both `toolTriggerSettings` (AI chat, MCP, shown as
   `app_<name>`) and `workflowActionTriggerSettings`. `retell-get-call` (refresh one call), `retell-set-dnc`,
   `retell-call-person` and `retell-send-sms` (real call / SMS chat: request built in `src/lib/outbound.ts`, defaults for number and

@@ -18,9 +18,9 @@ import {
   CHAT_FIELD_IDS as CHAT_F,
   CHAT_OBJECT_UNIVERSAL_IDENTIFIER,
 } from 'src/constants/universal-identifiers';
+import { DASHBOARD_OBJECT_UNIVERSAL_IDENTIFIER } from 'src/constants/standard-objects';
 
-// Every widget shows the same window, so the page reads as one period. The widgets of an app are not
-// editable in the UI (not verified), hence one constant here.
+// Every widget shows the same window, so the dashboard reads as one period; the tab titles say which.
 const PERIOD_DAYS = 30;
 
 type Cell = { row: number; column: number; rowSpan: number; columnSpan: number };
@@ -158,11 +158,12 @@ const chatWidgets: PageLayoutWidgetManifest[] = [
 export default definePageLayout({
   universalIdentifier: ANALYTICS_LAYOUT_UNIVERSAL_IDENTIFIER,
   name: 'Retell Analytics',
-  type: 'STANDALONE_PAGE',
+  type: 'DASHBOARD',
+  objectUniversalIdentifier: DASHBOARD_OBJECT_UNIVERSAL_IDENTIFIER,
   tabs: [
     {
       universalIdentifier: ANALYTICS_CALLS_TAB_UNIVERSAL_IDENTIFIER,
-      title: 'Calls',
+      title: `Calls · last ${PERIOD_DAYS} days`,
       position: 0,
       icon: 'IconPhoneCall',
       layoutMode: PageLayoutTabLayoutMode.GRID,
@@ -170,7 +171,7 @@ export default definePageLayout({
     },
     {
       universalIdentifier: ANALYTICS_CHATS_TAB_UNIVERSAL_IDENTIFIER,
-      title: 'Chats',
+      title: `Chats · last ${PERIOD_DAYS} days`,
       position: 1,
       icon: 'IconMessageCircle',
       layoutMode: PageLayoutTabLayoutMode.GRID,
