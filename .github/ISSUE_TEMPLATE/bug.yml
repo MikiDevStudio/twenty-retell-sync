@@ -1,0 +1,21 @@
+name: Bug report
+description: Something does not sync, link or work as the guide says
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: What happened
+      description: What you did, what you expected and what you saw. Error text from the Retell tab or the function logs helps most.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: App version
+      placeholder: "0.1.21"
+  - type: dropdown
+    attributes:
+      label: Twenty
+      options: [Twenty Cloud, Self-hosted]
+  - type: markdown
+    attributes:
+      value: "Do not paste API keys, phone numbers, transcripts or other personal data."

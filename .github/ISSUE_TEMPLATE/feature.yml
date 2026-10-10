@@ -1,0 +1,10 @@
+name: Feature request
+description: Something the app should do
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: What you want to do
+      description: The task in your CRM or call flow, not only the solution you have in mind.
+    validations:
+      required: true
