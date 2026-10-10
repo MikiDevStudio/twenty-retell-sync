@@ -109,3 +109,30 @@ export const GET_CALL_FN_UNIVERSAL_IDENTIFIER = 'ebcb0e71-2ce9-4455-adab-ffd78b7
 export const CALL_PERSON_FN_UNIVERSAL_IDENTIFIER = '55a4261c-98d4-466a-8ee7-c7c1f3bb2504';
 export const SEND_SMS_FN_UNIVERSAL_IDENTIFIER = 'b9a16efe-6afa-435f-960e-ac5f137d1851';
 export const RETELL_SKILL_UNIVERSAL_IDENTIFIER = 'f59984d0-ca9d-460c-9c7d-30cd66bc56c7';
+
+export const ANALYTICS_LAYOUT_UNIVERSAL_IDENTIFIER = 'a956da3a-c54b-4b74-a947-541c18611e4a';
+export const ANALYTICS_CALLS_TAB_UNIVERSAL_IDENTIFIER = '9d8a2833-ae67-4534-b6b8-2f87563c8373';
+export const ANALYTICS_CHATS_TAB_UNIVERSAL_IDENTIFIER = 'ea77cf9d-fb49-4419-b72d-3c2c6c934d44';
+export const ANALYTICS_NAVIGATION_MENU_ITEM_UNIVERSAL_IDENTIFIER = '6a155552-6382-49a8-a992-f1ad231ce484';
+
+export const ANALYTICS_WIDGET_IDS = {
+  callsCount: '7f06ba3d-4037-42a7-bac4-8f14ef6f5d0a',
+  callsAvgDuration: '00a3d52d-7457-4b31-8c04-bc5bce564236',
+  callsLatencyP50: '25becef8-284d-42be-882b-28dd91cb7c37',
+  callsTotalCost: '1dc96cdb-90a5-4234-b798-e86065b8bb25',
+  callsPickedUpRate: '916d4d96-59b6-4600-9da9-02edb1b1ebd5',
+  callsTransferred: '75f8bb0e-eca6-467d-9d37-267a378ff9fb',
+  callsVoicemail: 'a2e401c1-c026-489d-aee6-ef9060d5f30e',
+  callsPerDay: 'edd3d1bf-ce13-4ee1-ac0d-05e06efe8a00',
+  callsConnectionByDay: '646fb8f4-a289-4cd5-a95c-7090bd3d6bea',
+  callsSuccessful: '65bd93c8-24c5-4fb6-b53a-ba4c692b0f77',
+  callsSentiment: '35a971cc-d79c-4bc6-9635-ca34e209ad95',
+  callsDirection: 'fdf6e4bc-3640-4401-8feb-07fde1883d1a',
+  callsDisconnectionReason: 'c1b782a8-f781-4876-9f77-ad7a1261b3e8',
+  chatsCount: '547a7835-127c-44cd-b25c-513938a76b46',
+  chatsAvgDuration: '6fe8db5c-c108-4f4a-8028-bfb7574dbf1b',
+  chatsTotalCost: '51b07f66-bd30-47e7-85f9-b2d2a7fbf20a',
+  chatsPerDay: '03ed83e9-8dce-42c2-b0a9-bf2c7628146e',
+  chatsSuccessful: '9ee381c4-af5d-4dc4-82ba-d7eac503e9a7',
+  chatsSentiment: 'ec8c697c-032e-44c8-8fe0-a8df8e59156b',
+} as const;
