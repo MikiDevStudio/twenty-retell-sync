@@ -1,6 +1,6 @@
 {
   "name": "twenty-retell-sync",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "license": "MIT",
   "author": "MikiDev Studio",
   "homepage": "https://github.com/MikiDevStudio/twenty-retell-sync#readme",
@@ -50,5 +50,5 @@
     "vite-tsconfig-paths": "^4.2.1",
     "vitest": "^4.0.0"
   },
-  "description": "Keeps Retell AI calls and SMS chats in sync with Twenty CRM"
+  "description": "Retell AI calls and SMS chats in sync with Twenty CRM, plus call and text actions for workflows and the AI chat"
 }
