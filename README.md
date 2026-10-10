@@ -51,7 +51,7 @@ Every field the app adds to People and Opportunities starts with *Retell*, so it
 
 1. **Allow logic functions on the server.** Set `LOGIC_FUNCTION_TYPE=LOCAL` (or `LAMBDA`) under **Settings > Admin Panel >
    Configuration**, or in the server environment. Production defaults to `DISABLED`, and then every route of the app answers 403.
-2. **Install the app** in your workspace.
+2. **Install the app** from Settings > Applications > Marketplace: search "Retell Sync" with the "Vetted only" filter off.
 3. **Paste your Retell key.** Open **Settings > Apps > Retell Sync for Twenty > Retell**, paste the key that has the *Webhook* badge
    (Retell dashboard, Settings, API Keys) and press **Save key**. You need the *Applications* permission.
 4. **Connect the agents.** In **Webhook**, enter the public address of your Twenty server, tick the agents (none ticked means all)

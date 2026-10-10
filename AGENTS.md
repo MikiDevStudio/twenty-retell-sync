@@ -11,8 +11,11 @@ Usage: `README.md`. Design notes (`docs/`) and saved vendor docs (`reference/`) 
 - typecheck / lint: `yarn typecheck` / `yarn lint`
 - run the pull sync by hand: `POST http://localhost:2020/s/retell/sync` with the local dev API key
   (`dev:function:exec` fails auth on this setup)
-- deploy to a Twenty server: `yarn twenty remote:add --url <server> --api-key <key> --as server`, raise `version` in `package.json`
-  (the server refuses an equal or lower one), then `yarn twenty app:publish --private -r server` and `yarn twenty app:install -r server`
+- release: raise `version` in `package.json`, commit, push tag `vX.Y.Z`. `.github/workflows/publish.yml` publishes to npm
+  (trusted publishing, provenance) and creates the GitHub release; servers pick it up from the marketplace catalog (hourly sync
+  or Admin Panel > Apps > Synchronize catalog). A private deploy to one server without npm is still
+  `yarn twenty app:publish --private -r server` + `app:install -r server`.
+- GitHub page: `.github/README.md` (images allowed). The root `README.md` is the marketplace About tab and npm readme (text only).
 - new entity: `yarn twenty dev:add <type>` (generates ids); all uuids must be v4
 
 ## Code map

@@ -106,12 +106,9 @@ sequenceDiagram
 # Installation
 
 1. **Allow logic functions** on your Twenty server (`LOGIC_FUNCTION_TYPE=LOCAL` or `LAMBDA`; production defaults to `DISABLED`).
-2. **Install the app** in your workspace. Until it is listed on the Twenty marketplace, deploy it from source:
-   ```bash
-   yarn install
-   yarn twenty remote:add --url https://your-twenty-server --api-key <key> --as server
-   yarn twenty app:publish --private -r server && yarn twenty app:install -r server
-   ```
+2. **Install the app** from the Twenty marketplace: Settings > Applications > Marketplace, search "Retell Sync" (turn off
+   "Vetted only"; that filter shows only apps made by Twenty). The npm package is
+   [`twenty-retell-sync`](https://www.npmjs.com/package/twenty-retell-sync).
 3. **Paste your Retell key** in Settings > Apps > Retell Sync for Twenty > Retell. Use the key with the *Webhook* badge.
 4. **Tick your agents** and press **Set webhook on agents**. The first sync loads the last 30 days.
 
