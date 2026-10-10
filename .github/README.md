@@ -17,8 +17,18 @@
 </div>
 
 <p align="center">
+  <img src="./assets/demo.webp" alt="Demo: a Retell call ends, the webhook lands, the call appears on the Person linked to her opportunity, and the Summary tab shows the summary and transcript" />
+</p>
+
+<details>
+<summary><strong>Overview</strong> · the whole flow on one picture</summary>
+<br/>
+
+<p align="center">
   <img src="./assets/01-cover.webp" alt="Retell Sync for Twenty: a call or chat goes from Retell through a signed webhook to a transcript, a summary and a CRM record" />
 </p>
+
+</details>
 
 <br />
 
