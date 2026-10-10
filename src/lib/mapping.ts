@@ -1,3 +1,4 @@
+import { connectionOf, latencyP50Of, transferredOf } from 'src/lib/call-outcome';
 import { buildTranscript } from 'src/lib/transcript';
 
 // Retell call/chat -> data for the retellCall / retellChat objects.
@@ -95,6 +96,9 @@ export const mapCall = (call: Retell, exclude: ReadonlySet<string>): Json => {
       endedAt: iso(call.end_timestamp),
       durationMs: call.duration_ms ?? null,
       disconnectionReason: call.disconnection_reason ?? null,
+      connection: connectionOf(call.disconnection_reason),
+      transferred: transferredOf(call.disconnection_reason),
+      latencyP50Ms: latencyP50Of(call),
       summary: analysis.call_summary ?? null,
       sentiment: sentiment(analysis.user_sentiment),
       successful: analysis.call_successful ?? null,

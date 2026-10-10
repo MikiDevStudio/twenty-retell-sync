@@ -89,6 +89,33 @@ describe('mapping', () => {
     expect(data).toHaveProperty('name');
   });
 
+  it('derives connection, transferred and latency from the call', () => {
+    const data = mapCall(
+      { call_id: 'd1', disconnection_reason: 'call_transfer', latency: { e2e: { p50: 640.2 } } },
+      new Set(),
+    );
+    expect(data).toMatchObject({ connection: 'CONNECTED', transferred: true, latencyP50Ms: 640 });
+    expect(mapCall({ call_id: 'd2', disconnection_reason: 'dial_no_answer' }, new Set())).toMatchObject({
+      connection: 'NOT_CONNECTED',
+      transferred: false,
+      latencyP50Ms: null,
+    });
+  });
+
+  it('leaves the derived fields null for a call in progress, so an update never blanks stored values', () => {
+    expect(mapCall({ call_id: 'd3' }, new Set())).toMatchObject({
+      connection: null,
+      transferred: null,
+      latencyP50Ms: null,
+    });
+  });
+
+  it('drops a derived field named in the exclude list', () => {
+    const data = mapCall({ call_id: 'd4', disconnection_reason: 'user_hangup' }, parseExcluded('connection'));
+    expect(data).not.toHaveProperty('connection');
+    expect(data).toHaveProperty('transferred', false);
+  });
+
   it('maps the agent name and a duration for chats, as calls have', () => {
     const chat = mapChat({ chat_id: 'x', agent_name: 'Agent', start_timestamp: 1000, end_timestamp: 4500 }, new Set());
     expect(chat).toMatchObject({ agentName: 'Agent', durationMs: 3500 });

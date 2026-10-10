@@ -55,6 +55,9 @@ export const CALL_FIELD_IDS = {
   metadata: 'ac31d231-8e42-471e-95fe-0a5534e9f9cc',
   costCents: '0444a056-1fca-4503-a890-d8a9643283c3',
   recording: '6c62b2dc-41a8-467b-b49a-7abbd0c768e8',
+  connection: 'b0c0407a-90b0-42c1-9880-b2e7e0c6eca7',
+  transferred: '0cc029a5-560a-46fd-abe6-daf0c85f6168',
+  latencyP50Ms: '6a04598e-ef0f-4162-9387-635a50d84163',
 } as const;
 
 export const CHAT_FIELD_IDS = {
