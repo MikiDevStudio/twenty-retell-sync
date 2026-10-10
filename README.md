@@ -15,6 +15,8 @@ trademarks of their owners, used here only to name the services this app connect
 - **Linked to your CRM.** Each call finds its **Person** by phone number and, when it can tell, its **Opportunity**. They show up
   on the Person and Opportunity pages.
 - **A Summary tab.** Every call and chat page opens with the summary, a player for the recording and a clean transcript.
+- **An analytics page.** A **Retell Analytics** entry in the sidebar shows call and chat counts, duration, latency, cost, outcomes and
+  sentiment of the last 30 days as native Twenty charts, on two tabs (Calls and Chats).
 - **Do-not-call in sync.** A caller who asks not to be called again is flagged on their Person. A flag set in Twenty goes to Retell.
 - **Nothing lost.** Webhooks deliver in seconds, and a scheduled sync backfills history and closes any gap a missed webhook leaves.
 - **Call and text from Twenty.** Workflow steps and AI tools place a call or start an SMS chat with a Person, and a built-in
@@ -41,6 +43,8 @@ Re-deliveries and out-of-order events are safe: one record per call, and a fille
 | Person | Retell calls and chats, **Retell do not call** (with *changed at* and *source*), **Retell contact ID**, **Retell last contacted at** |
 | Opportunity | Retell calls and chats |
 | Call and chat pages | **Summary** tab, right after Home |
+| Sidebar | **Retell Analytics** page with a Calls tab and a Chats tab |
+| Retell Calls | **Connection** (connected, not connected, error), **Transferred** and **Latency p50** |
 | Settings > Apps | **Retell** tab: the control panel |
 | Workflows | **Retell: call person**, **Retell: send SMS**, **Retell: refresh call**, **Retell: set do-not-call** actions |
 | AI chat and MCP | The same four actions as tools, and the **Retell calls and SMS** skill |
@@ -69,7 +73,9 @@ That's it. The first sync loads the last 30 days of history.
 - **Resync**: re-reads every call and chat of the last N days and rewrites their records, including ones that look complete. Use it
   after deleting records in Twenty or after regenerating the analysis in Retell (Retell sends no webhook for that). It never creates
   duplicates, runs in chunks every 5 minutes and shows how many records it created and updated. Calls Retell has already deleted
-  cannot come back, and a field you now exclude is not removed from existing records.
+  cannot come back, and a field you now exclude is not removed from existing records. Run it once after updating to a version
+  that adds fields (**Connection**, **Transferred** and **Latency p50** on calls): older calls keep those empty, and the picked-up
+  rate counts them as unknown, until then.
 - **Sync schedule**: how often the pull sync runs (minimum 5 minutes). Webhooks deliver new calls within seconds; the schedule only
   closes gaps.
 - **Webhook**: registers `https://<your-twenty-host>/s/retell/webhook` on the ticked agents through the Retell API. **Remove webhook**
@@ -160,6 +166,10 @@ so type the key after it by hand.
 - **PII scrubbing.** For agents set to "Everything except PII", Retell returns scrubbed copies, and the app stores those: the
   transcript, summary and analysis hold Retell's placeholders (for example `[person name 1]`).
 - **Retell last contacted at** on Person holds the start of the newest Retell call or chat with that person. It only moves forward.
+- **Retell Analytics** shows the last 30 days on every widget. The picked-up rate comes from **Connection**, which the app derives from
+  Retell's disconnection reason; a reason Retell has no documented status for leaves it empty. There is no concurrency or credit
+  balance chart: Retell's public API reports no balance, and concurrency is a live value without history. A role needs read access
+  to Retell Calls and Retell Chats to see the charts.
 - **Summary tab shows "No Data" after install.** A Twenty tab that stayed open during the install can cache the tab's widget in
   a form Twenty does not render ([twentyhq/twenty#27771](https://github.com/twentyhq/twenty/issues/27771)), and a reload keeps it.
   Open the record page layout editor and press **Reset**, or clear the site data for your Twenty domain in the browser and sign in again.

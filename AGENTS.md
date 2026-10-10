@@ -35,6 +35,10 @@ Usage: `README.md`. Design notes (`docs/`) and saved vendor docs (`reference/`) 
   `retellLastContactedAt`. Retell side: call `disconnection_reason`, `list-contacts` reconcile on every sync. Twenty side:
   `retell-dnc-changed.ts` (`person.updated` trigger) and `retell-set-dnc.ts` (workflow step). App writes always carry
   `retellDoNotCallAt`; the trigger skips those, which is what stops the echo.
+- `src/lib/call-outcome.ts` (pure): `connection`, `transferred` and `latencyP50Ms` on a call, derived from `disconnection_reason` and
+  `latency.e2e.p50`; a reason without a documented status maps to null. `src/page-layouts/retell-analytics.page-layout.ts` +
+  `src/navigation-menu-items/retell-analytics.navigation-menu-item.ts`: the Retell Analytics page (Calls and Chats tabs, native chart
+  widgets, `STANDALONE_PAGE` + `PAGE_LAYOUT` sidebar item, every widget limited to the last 30 days by `PERIOD_DAYS`). No front component.
 - Actions for Twenty's AI and workflows (#17): one logic function carries both `toolTriggerSettings` (AI chat, MCP, shown as
   `app_<name>`) and `workflowActionTriggerSettings`. `retell-get-call` (refresh one call), `retell-set-dnc`,
   `retell-call-person` and `retell-send-sms` (real call / SMS chat: request built in `src/lib/outbound.ts`, defaults for number and
