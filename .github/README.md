@@ -17,18 +17,8 @@
 </div>
 
 <p align="center">
-  <img src="./assets/demo.webp" alt="Demo: a Retell call ends, the webhook lands, the call appears on the Person linked to her opportunity, and the Summary tab shows the summary and transcript" />
-</p>
-
-<details>
-<summary><strong>Overview</strong> · the whole flow on one picture</summary>
-<br/>
-
-<p align="center">
   <img src="./assets/01-cover.webp" alt="Retell Sync for Twenty: a call or chat goes from Retell through a signed webhook to a transcript, a summary and a CRM record" />
 </p>
-
-</details>
 
 <br />
 
@@ -38,6 +28,17 @@ Teams that run voice and SMS agents on [Retell AI](https://www.retellai.com) and
 glue the two together with an automation service: one more account, one more bill, and one more place where a call gets lost.
 Retell Sync is a Twenty app that talks to both APIs directly. Install it, paste your Retell key, and calls and chats arrive in
 Twenty as records, linked to the right Person and Opportunity.
+
+<br />
+
+# See it in action
+
+A Retell call ends, and seconds later it is on the Person in Twenty, linked to her opportunity, with the summary and
+transcript on its own tab. (Made-up data on a local Twenty.)
+
+<p align="center">
+  <img src="./assets/demo.webp" alt="Demo: a Retell call ends, the webhook lands, the call appears on the Person linked to her opportunity, and the Summary tab shows the summary and transcript" />
+</p>
 
 <br />
 
