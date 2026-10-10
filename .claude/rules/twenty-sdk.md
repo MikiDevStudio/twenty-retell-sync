@@ -24,3 +24,7 @@ Lessons from building on twenty-sdk 2.45.0. Each line says why; delete one only 
 - npm 12 put the very first publish of a new package into staging (placeholder `0.0.0-stage`) until the owner approved it on
   npmjs.com; later publishes through trusted publishing went live directly. `publish.yml` uses Node 24 latest because npm@latest
   refuses Node 24.5 from `.nvmrc`.
+- A `BAR_CHART` widget needs `layout: 'VERTICAL'` (or horizontal); without it apply fails the whole sync with "Layout is required for bar
+  chart widget", though the type marks the key optional. Seen applying the analytics page probe.
+- A widget filter in the manifest is `{ fieldMetadataUniversalIdentifier, operand, value, type }` with no `id`; a relative date is
+  `operand: 'IS_RELATIVE', value: 'PAST_7_DAY'` (`<DIRECTION>_<N>_<UNIT>`), checked on local 2026-10-10.
